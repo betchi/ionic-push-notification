@@ -20,5 +20,22 @@ angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    var push = PushNotification.init({
+        "ios": {"alert": "true", "badge": "true", "sound": "true"}
+    });
+
+    push.on('registration', function(data) {
+        console.log("registration!")
+        console.log(data);
+    });
+    push.on('notification', function(data) {
+        console.log("notification!")
+        console.log(data);
+    });
+    push.on('error', function(e) {
+        console.log("error!")
+        console.log(e.message);
+    });
   });
 })
